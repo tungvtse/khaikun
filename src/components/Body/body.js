@@ -36,9 +36,9 @@ export const BodyDemo = () => {
             mcp: "10 Downing Street",
         },
         {
-            key: "1",
+            key: "3",
             name: "Mifsdfke",
-            no: "1",
+            no: "3",
             mcp: "10 Downing Street",
         },
         {
@@ -150,7 +150,7 @@ export const BodyDemo = () => {
             title: "No",
             dataIndex: "no",
             key: "no",
-
+            align: 'center'
         },
         {
             title: "Colector and janitor",
@@ -163,11 +163,15 @@ export const BodyDemo = () => {
                     }
                 };
             },
+            align: 'center'
+
         },
         {
             title: "MCPs",
             dataIndex: "mcp",
             key: "mcp",
+            align: 'center'
+
         },
 
     ];

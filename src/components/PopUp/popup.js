@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useCallback } from "react";
+import React, { useRef, useEffect, useCallback, useState } from "react";
 import { useSpring, animated } from "react-spring";
 import styled from "styled-components/macro";
 import { MdClose } from "react-icons/md";
@@ -60,9 +60,10 @@ export const PopUpData = ({ isShowPopUp, setShowPopUp, title, data }) => {
     const modalRef = useRef();
     const columns = [
         {
-            title: "Colector and janitor",
+            title: " Choose Colector and janitor",
             dataIndex: "name",
             key: "name",
+
         },
     ]
 
@@ -79,6 +80,24 @@ export const PopUpData = ({ isShowPopUp, setShowPopUp, title, data }) => {
             setShowPopUp(false);
         }
     };
+    const [state, setState] = useState([]);
+    const selectRow = (record) => {
+        const selectedRowKeys = [...state.selectedRowKeys];
+        if (selectedRowKeys.indexOf(record.key) >= 0) {
+            selectedRowKeys.splice(selectedRowKeys.indexOf(record.key), 1);
+        } else {
+            selectedRowKeys.push(record.key);
+        }
+        setState({ selectedRowKeys });
+    };
+    const onSelectedRowKeysChange = (selectedRowKeys) => {
+        setState({ selectedRowKeys });
+    };
+    const { selectedRowKeys } = state;
+    const rowSelection = {
+        selectedRowKeys,
+        onChange: onSelectedRowKeysChange
+    };
 
     return (
         <>
@@ -90,11 +109,26 @@ export const PopUpData = ({ isShowPopUp, setShowPopUp, title, data }) => {
                                 <ModalTitle className="w-full h-12 bg-[#D9D9D9] pt-1 font-bold text-3xl">
                                     {title}
                                 </ModalTitle>
-                                <Table className="mt-2 w-[80%] "
+                                <Table className="mt-4 w-[80%] "
                                     dataSource={data}
                                     columns={columns}
-                                    pagination={{ pageSize: 6 }} />
+                                    pagination={{ pageSize: 6 }}
+                                    showHeader={false}
+                                    onRow={(record) => ({
+                                        onClick: () => {
+                                            selectRow(record);
+                                        },
+                                    })}
+                                    rowSelection={rowSelection} />
                             </ModalContent>
+                            <div className="flex">
+                                <div className="w-4/5"></div>
+                                <div className="w-1/5 ">
+                                    <Button className="bg-[#2C4E29] text-white">CONTINUTE</Button>
+                                </div>
+                            </div>
+
+
                             <CloseModalButton
                                 aria-label="Close modal"
                                 onClick={() => setShowPopUp((prev) => !prev)}
