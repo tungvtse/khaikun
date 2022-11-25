@@ -1,8 +1,9 @@
-import React from "react";
-import { MdClose } from "react-icons/md";
-import { useRef } from "react";
-import styled from "styled-components";
+import React, { useRef, useEffect, useCallback } from "react";
 import { useSpring, animated } from "react-spring";
+import styled from "styled-components/macro";
+import { MdClose } from "react-icons/md";
+import { Button, Input, Table } from "antd";
+import { ButtonStyled } from "../Button/buttons";
 
 const Background = styled.div`
   width: 100%;
@@ -17,9 +18,9 @@ const Background = styled.div`
 
 const ModalWrapper = styled.div`
   width: 700px;
-  height: 700px;
+  height: 500px;
   box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
-  background: #66AB60;
+  background: #66ab60;
   color: #000;
   grid-template-columns: 1fr 1fr;
   position: relative;
@@ -50,9 +51,20 @@ const CloseModalButton = styled(MdClose)`
   padding: 0;
   z-index: 10;
 `;
-export const PopUpData = ({ isShowPopUp, setShowPopUp, data, title }) => {
+const ModalTitle = styled.div`
+  text-align: center;
+`;
 
+export const PopUpData = ({ isShowPopUp, setShowPopUp, title, data }) => {
+    console.log(data)
     const modalRef = useRef();
+    const columns = [
+        {
+            title: "Colector and janitor",
+            dataIndex: "name",
+            key: "name",
+        },
+    ]
 
     const animation = useSpring({
         config: {
@@ -68,12 +80,6 @@ export const PopUpData = ({ isShowPopUp, setShowPopUp, data, title }) => {
         }
     };
 
-
-
-
-
-
-
     return (
         <>
             {isShowPopUp ? (
@@ -81,10 +87,13 @@ export const PopUpData = ({ isShowPopUp, setShowPopUp, data, title }) => {
                     <animated.div style={animation}>
                         <ModalWrapper showModal={isShowPopUp}>
                             <ModalContent>
-                                <h1 className="mt-8">{title}</h1>
-                                <div className="footer">
-
-                                </div>
+                                <ModalTitle className="w-full h-12 bg-[#D9D9D9] pt-1 font-bold text-3xl">
+                                    {title}
+                                </ModalTitle>
+                                <Table className="mt-2 w-[80%] "
+                                    dataSource={data}
+                                    columns={columns}
+                                />
                             </ModalContent>
                             <CloseModalButton
                                 aria-label="Close modal"

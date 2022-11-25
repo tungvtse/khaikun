@@ -205,7 +205,7 @@ export const BodyDemo = () => {
                 title="tung"
                 announcement='tungtungtung'
             />
-            <PopUpData isShowPopUp={showPopUpData} setShowPopUp={setShowPopUpData} data={dataSource.map(data => data.name)} title />
+            <PopUpData isShowPopUp={showPopUpData} setShowPopUp={setShowPopUpData} data={dataSource.map(data => data)} title={"tugntungtungutun"} />
 
             <div className="bodyDiv">
                 <div className="flex">
