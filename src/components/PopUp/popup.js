@@ -93,7 +93,7 @@ export const PopUpData = ({ isShowPopUp, setShowPopUp, title, data }) => {
                                 <Table className="mt-2 w-[80%] "
                                     dataSource={data}
                                     columns={columns}
-                                />
+                                    pagination={{ pageSize: 6 }} />
                             </ModalContent>
                             <CloseModalButton
                                 aria-label="Close modal"

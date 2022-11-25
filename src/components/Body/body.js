@@ -25,25 +25,25 @@ export const BodyDemo = () => {
     const dataSource = [
         {
             key: "1",
-            name: "Mike",
+            name: "dsfMike",
             no: "1",
             mcp: "10 Downingvxcv Street",
         },
         {
             key: "2",
-            name: "John",
+            name: "Johfdsfn",
             no: "2",
             mcp: "10 Downing Street",
         },
         {
             key: "1",
-            name: "Mike",
+            name: "Mifsdfke",
             no: "1",
             mcp: "10 Downing Street",
         },
         {
             key: "2",
-            name: "John",
+            name: "Johfsn",
             no: "2",
             mcp: "10 Downing Street",
         },
