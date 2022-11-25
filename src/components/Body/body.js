@@ -219,13 +219,8 @@ export const BodyDemo = () => {
                         columns={columns}
 
                         className="w-3/5 mt-10"
-                        onRow={(record) => ({
-                            onClick: () => {
-                                selectRow(record);
-                            },
-                        })}
-                        rowSelection={rowSelection}
 
+                        rowSelection={rowSelection}
                     />
                     <div className="w-1/5"></div>
                 </div>

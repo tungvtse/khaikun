@@ -81,15 +81,15 @@ export const PopUpData = ({ isShowPopUp, setShowPopUp, title, data }) => {
         }
     };
     const [state, setState] = useState([]);
-    const selectRow = (record) => {
-        const selectedRowKeys = [...state.selectedRowKeys];
-        if (selectedRowKeys.indexOf(record.key) >= 0) {
-            selectedRowKeys.splice(selectedRowKeys.indexOf(record.key), 1);
-        } else {
-            selectedRowKeys.push(record.key);
-        }
-        setState({ selectedRowKeys });
-    };
+    // const selectRow = (record) => {
+    //     const selectedRowKeys = [...state.selectedRowKeys];
+    //     if (selectedRowKeys.indexOf(record.key) >= 0) {
+    //         selectedRowKeys.splice(selectedRowKeys.indexOf(record.key), 1);
+    //     } else {
+    //         selectedRowKeys.push(record.key);
+    //     }
+    //     setState({ selectedRowKeys });
+    // };
     const onSelectedRowKeysChange = (selectedRowKeys) => {
         setState({ selectedRowKeys });
     };
@@ -114,17 +114,13 @@ export const PopUpData = ({ isShowPopUp, setShowPopUp, title, data }) => {
                                     columns={columns}
                                     pagination={{ pageSize: 6 }}
                                     showHeader={false}
-                                    onRow={(record) => ({
-                                        onClick: () => {
-                                            selectRow(record);
-                                        },
-                                    })}
+
                                     rowSelection={rowSelection} />
                             </ModalContent>
                             <div className="flex">
                                 <div className="w-4/5"></div>
                                 <div className="w-1/5 ">
-                                    <Button className="bg-[#2C4E29] text-white">CONTINUTE</Button>
+                                    <Button className="bg-[#2C4E29] text-white">CONTINUE</Button>
                                 </div>
                             </div>
 
